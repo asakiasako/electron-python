@@ -8,8 +8,13 @@
             "type": "node",
             "request": "launch",
             "name": "dev",
-            "program": "${workspaceFolder}/.electron-vue/dev-runner.js",
-            "cwd": "${workspaceFolder}"
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run-script",
+                "dev"
+            ],
+            "port": 5858,
+            "timeout": 60000
         },
         {
             "name": "py-app",
