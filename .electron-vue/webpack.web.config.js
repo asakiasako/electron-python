@@ -136,7 +136,7 @@ if (process.env.NODE_ENV === 'production') {
       {
         from: path.join(__dirname, '../static'),
         to: path.join(__dirname, '../dist/web/static'),
-        ignore: ['.*']
+        ignore: ['.gitignore', '*.md']
       }
     ]),
     new webpack.DefinePlugin({
