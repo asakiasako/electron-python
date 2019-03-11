@@ -2,9 +2,14 @@
 dist/electron/*
 dist/web/*
 build/*
+!build/installer.nsh
 !build/icons
 node_modules/
 npm-debug.log
 npm-debug.log.*
 thumbs.db
 !.gitkeep
+static/api
+static/py-app/build
+package.json.backup
+package.build.json
