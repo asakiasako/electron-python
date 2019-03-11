@@ -80,7 +80,7 @@ let rendererConfig = {
             loaders: {
               sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax=1&data=@import "./src/renderer/styles/global-vars"',
               scss: 'vue-style-loader!css-loader!sass-loader?data=@import "./src/renderer/styles/global-vars";',
-              less: 'vue-style-loader!css-loader!less-loader'
+              less: 'vue-style-loader!css-loader!less-loader?data=@import "./src/renderer/styles/global-vars";'
             }
           }
         }
