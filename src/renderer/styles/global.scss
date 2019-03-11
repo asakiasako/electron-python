@@ -1,0 +1,71 @@
+/* == General == */
+
+@import "font-awesome.css";
+@import "fonts";
+@import "font-face";
+@import "element-variables";
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+	background: #ffffff;
+	font-size: $default-font-size;
+    font-family: $global-font-family;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+*::-webkit-scrollbar{
+    width: 8px;
+    height: 8px;
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb{
+    border-radius: 4px;
+    background-color: rgba(0,0,0,0.12);
+}
+
+input, textarea, select, button {
+    font-size: $default-font-size;
+    font-family: $global-font-family;
+}
+
+a {
+    color: inherit;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+h1 {
+    font-size: 20px;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+h3 {
+    font-size: 16px;
+}
+
+p, .text-regular {
+    font-size: 14px;
+}
+
+th {
+    font-weight: normal;
+}

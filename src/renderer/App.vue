@@ -1,15 +1,17 @@
 <template>
-  <div id="app">
+  <div v-cloak id="app">
     <router-view></router-view>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'electron-python'
+    name: 'app-root'
   }
 </script>
 
-<style>
-  /* CSS */
+<style scoped>
+  #app {
+    height: 100%;
+  }
 </style>

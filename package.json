@@ -6,7 +6,10 @@
   "license": null,
   "main": "./dist/electron/main.js",
   "scripts": {
-    "build": "node .electron-vue/build.js && electron-builder",
+    "init": "node pre-init.js && cd py-app && pipenv install --dev && cd .. && npm install && npm run rebuild",
+    "prebuild": "node pre-build.js",
+    "build": "cd py-app && pipenv run build && cd .. && node .electron-vue/build.js && electron-builder",
+    "postbuild": "node post-build.js",
     "build:dir": "node .electron-vue/build.js && electron-builder --dir",
     "build:clean": "cross-env BUILD_TARGET=clean node .electron-vue/build.js",
     "build:web": "cross-env BUILD_TARGET=web node .electron-vue/build.js",
@@ -16,11 +19,18 @@
     "pack": "npm run pack:main && npm run pack:renderer",
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
-    "postinstall": "npm run lint:fix"
+    "postinstall": "npm run lint:fix",
+    "rebuild": "electron-rebuild -f"
   },
   "build": {
     "productName": "electron-python",
     "appId": "com.asakiasako.electron-python",
+    "asar": false,
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false
+    },
     "directories": {
       "output": "build"
     },
@@ -57,9 +67,13 @@
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
-    "vuex-electron": "^1.0.0"
+    "vuex-electron": "^1.0.0",
+    "element-ui": "^2.6.1",
+    "lodash": "^4.7.15",
+    "zerorpc": "^0.9.7"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.122",
     "ajv": "^6.5.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",

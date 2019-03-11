@@ -10,19 +10,51 @@ if (process.env.NODE_ENV !== 'development') {
   global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
 }
 
-let mainWindow
+const { createRpcServer, exitRpcServer, getRpcPort } = require('./rpc-server')
+require('./menu')
+
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
 
+/**
+ * Set global names
+ */
+global.getRpcPort = getRpcPort
+
+/**
+ * make single instance
+ */
+
+let mainWindow = null
+
+const gotTheLock = app.requestSingleInstanceLock()
+
+if (!gotTheLock) {
+  app.quit()
+} else {
+  app.on('second-instance', (event, commandLine, workingDirectory) => {
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore()
+      mainWindow.focus()
+    }
+  })
+}
+
+/**
+ * window initialize
+ */
+
+createRpcServer()
+
 function createWindow () {
-  /**
-   * Initial window options
-   */
   mainWindow = new BrowserWindow({
-    height: 563,
+    title: app.getName(),
     useContentSize: true,
-    width: 1000
+    width: 1280,
+    height: 720,
+    minWidth: 1280,
+    minHeight: 720
   })
 
   mainWindow.loadURL(winURL)
@@ -32,7 +64,15 @@ function createWindow () {
   })
 }
 
+/**
+ * app lifecycle
+ */
+
 app.on('ready', createWindow)
+
+app.on('will-quit', () => {
+  exitRpcServer()
+})
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {

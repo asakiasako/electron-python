@@ -1,0 +1,7 @@
+/* change icon-font path, - REQUIRED - */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "element-variables";
+
+/* import theme index file */
+@import "~element-ui/packages/theme-chalk/src/index";

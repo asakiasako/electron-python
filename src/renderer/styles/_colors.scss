@@ -1,0 +1,36 @@
+$-color-white: #fff;
+$-color-black: #000;
+
+/* Blue Gray */
+$-color-bluegray-50:  #ECEFF1;
+$-color-bluegray-100: #CFD8DC;
+$-color-bluegray-200: #B0BEC5;
+$-color-bluegray-300: #90A4AE;
+$-color-bluegray-400: #78909C;
+$-color-bluegray-500: #607D8B;
+$-color-bluegray-600: #546E7A;
+$-color-bluegray-700: #455A64;
+$-color-bluegray-800: #37474F;
+$-color-bluegray-900: #263238;
+
+/* Gray */
+$-color-gray-50:  #FAFAFA;
+$-color-gray-100: #F5F5F5;
+$-color-gray-200: #EEEEEE;
+$-color-gray-300: #E0E0E0;
+$-color-gray-400: #BDBDBD;
+$-color-gray-500: #9E9E9E;
+$-color-gray-600: #757575;
+$-color-gray-700: #616161;
+$-color-gray-800: #424242;
+$-color-gray-900: #212121;
+
+$-color-blue-line: #00b0ff;
+$-color-green-line: #42b983;
+
+$-color-blue-line-light-1: mix($-color-white, $-color-blue-line, 25%);
+$-color-green-line-light-1: mix($-color-white, $-color-green-line, 25%);
+$-color-blue-line-light-2: mix($-color-white, $-color-blue-line, 70%);
+$-color-green-line-light-2: mix($-color-white, $-color-green-line, 70%);
+$-color-blue-line-light-3: mix($-color-white, $-color-blue-line, 93%);
+$-color-green-line-light-3: mix($-color-white, $-color-green-line, 93%);

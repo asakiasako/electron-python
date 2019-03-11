@@ -1,0 +1,12 @@
+{
+    "path-autocomplete.pathMappings": {
+        "@": "${workspace}/src/renderer"
+    },
+    "python.pythonPath": "py-app\\.venv\\Scripts\\python.exe",
+    "python.linting.pylintEnabled": true,
+    "python.envFile": "${workspaceFolder}/py-app/.env",
+    "python.venvPath": "${workspaceFolder}/py-app",
+    "python.autoComplete.extraPaths": [
+        "${workspaceFolder}/py-app"
+    ]
+}
