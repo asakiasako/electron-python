@@ -44,15 +44,31 @@ let rendererConfig = {
       },
       {
         test: /\.scss$/,
-        use: ['vue-style-loader', 'css-loader', 'sass-loader']
+        use: ['vue-style-loader', 'css-loader', {
+          loader: 'sass-loader',
+          options: {
+            data: '@import "./src/renderer/styles/global-vars";'
+          }
+        }]
       },
       {
         test: /\.sass$/,
-        use: ['vue-style-loader', 'css-loader', 'sass-loader?indentedSyntax']
+        use: ['vue-style-loader', 'css-loader', {
+          loader: 'sass-loader',
+          options: {
+            indentedSyntax: 1,
+            data: '@import "./src/renderer/styles/global-vars"'
+          }
+        }]
       },
       {
         test: /\.less$/,
-        use: ['vue-style-loader', 'css-loader', 'less-loader']
+        use: ['vue-style-loader', 'css-loader', {
+          loader: 'less-loader',
+          options: {
+            data: '@import "./src/renderer/styles/global-vars";'
+          }
+        }]
       },
       {
         test: /\.css$/,
@@ -78,9 +94,9 @@ let rendererConfig = {
           options: {
             extractCSS: process.env.NODE_ENV === 'production',
             loaders: {
-              sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax=1&data=@import "./src/renderer/styles/global-vars"',
-              scss: 'vue-style-loader!css-loader!sass-loader?data=@import "./src/renderer/styles/global-vars";',
-              less: 'vue-style-loader!css-loader!less-loader?data=@import "./src/renderer/styles/global-vars";'
+              sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax=1',
+              scss: 'vue-style-loader!css-loader!sass-loader',
+              less: 'vue-style-loader!css-loader!less-loader'
             }
           }
         }
