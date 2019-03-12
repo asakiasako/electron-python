@@ -1,9 +1,10 @@
 {
   "name": "electron-python",
   "version": "0.0.1",
-  "author": "",
-  "description": "An electron-vue project",
-  "license": null,
+  "author": "Chongjun Lei <asakiasako@foxmail.com>",
+  "repository": "git@github.com:asakiasako/electron-python.git",
+  "description": "A minimal project to use Electron as GUI of python applications.",
+  "license": "LGPL-3.0",
   "main": "./dist/electron/main.js",
   "scripts": {
     "preinstall": "node pre-init.js && cd py-app && pipenv install --dev && cd ..",
@@ -23,7 +24,7 @@
     "rebuild": "electron-rebuild -f"
   },
   "build": {
-    "productName": "electron-python",
+    "productName": "Electron Python",
     "appId": "com.asakiasako.electron-python",
     "asar": false,
     "nsis": {

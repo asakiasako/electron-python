@@ -1,7 +1,17 @@
 // variables
-@import "font-face";
 @import "fonts";
 @import "font-awesome";
+
+// == Font Face ==
+@font-face {
+    font-family: Roboto;
+    src: url('../fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+    font-family: RobotoMono;
+    src: url('../fonts/RobotoMono-Regular.ttf');
+}
 
 // == General ==
 html {
