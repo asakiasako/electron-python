@@ -47,7 +47,7 @@ let rendererConfig = {
         use: ['vue-style-loader', 'css-loader', {
           loader: 'sass-loader',
           options: {
-            data: '@import "./src/renderer/styles/global-vars";'
+            data: '@import "./src/renderer/assets/styles/globals";'
           }
         }]
       },
@@ -57,7 +57,7 @@ let rendererConfig = {
           loader: 'sass-loader',
           options: {
             indentedSyntax: 1,
-            data: '@import "./src/renderer/styles/global-vars"'
+            data: '@import "./src/renderer/assets/styles/globals"'
           }
         }]
       },
@@ -66,7 +66,7 @@ let rendererConfig = {
         use: ['vue-style-loader', 'css-loader', {
           loader: 'less-loader',
           options: {
-            data: '@import "./src/renderer/styles/global-vars";'
+            data: '@import "./src/renderer/assets/styles/globals";'
           }
         }]
       },

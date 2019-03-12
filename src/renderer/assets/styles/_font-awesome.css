@@ -1,6 +1,6 @@
 @font-face {
     font-family: FontAwesome;
-    src: url('../assets/fonts/fontawesome-webfont.ttf');
+    src: url('/src/renderer/assets/fonts/fontawesome-webfont.ttf');
 }
 
 [class^="el-icon-fa-"], [class*=" el-icon-fa-"] {

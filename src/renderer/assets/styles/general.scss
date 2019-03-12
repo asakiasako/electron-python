@@ -1,10 +1,9 @@
-/* == General == */
-
-@import "font-awesome.css";
-@import "fonts";
+// variables
 @import "font-face";
-@import "element-variables";
+@import "fonts";
+@import "font-awesome";
 
+// == General ==
 html {
     height: 100%;
 }
