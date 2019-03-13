@@ -7,7 +7,6 @@ import '@/assets/styles/general.scss'
 import '@/assets/styles/element-theme.scss'
 import locale from 'element-ui/lib/locale/lang/en'
 import AppRoot from '@/App'
-import appState from './app-state'
 import {rpcClient} from '@/rpc-client'
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
@@ -19,7 +18,6 @@ Vue.use(ElementUI, { size: 'medium', locale })
 /* bind constants to Vue */
 let bus = new Vue()
 Vue.prototype.bus = bus
-Vue.prototype.appState = appState
 Vue.prototype.rpcClient = rpcClient
 
 /* mount Vue instance to DOM */
