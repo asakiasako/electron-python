@@ -64,13 +64,12 @@
     }
   },
   "dependencies": {
+    "element-ui": "^2.6.1",
+    "lodash": "^4.7.15",
     "vue": "^2.5.22",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.2",
     "vuex": "^3.1.0",
-    "vuex-electron": "^1.0.3",
-    "element-ui": "^2.6.1",
-    "lodash": "^4.7.15",
     "zerorpc": "^0.9.7"
   },
   "devDependencies": {
