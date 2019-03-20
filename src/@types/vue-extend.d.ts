@@ -5,7 +5,6 @@ declare module 'vue/types/vue' {
   interface Vue {
     $electron: AllElectron
     bus: Vue
-    appState: object
     rpcClient: {
       invoke(
         apiCategory: string, 
