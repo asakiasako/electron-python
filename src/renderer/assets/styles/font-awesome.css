@@ -1,9 +1,9 @@
 @font-face {
     font-family: FontAwesome;
-    src: url('../fonts/fontawesome-webfont.ttf');
+    src: url('~@/assets/fonts/fontawesome-webfont.ttf');
 }
 
-[class^="el-icon-fa-"], [class*=" el-icon-fa-"] {
+[class^="el-icon-"][class^="el-icon-fa-"], [class*=" el-icon-"][class*=" el-icon-fa-"] {
     font-family: FontAwesome !important;
 }
 
