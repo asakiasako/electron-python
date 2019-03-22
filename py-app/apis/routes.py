@@ -1,4 +1,4 @@
-from .components.example import ROUTES as example
+from .modules.example import ROUTES as example
 
 # Root path: ":"
 API_ROUTES = {
