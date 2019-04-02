@@ -7,17 +7,18 @@ import time
 import threading
 
 
-def flush_stdout_loop():
+def flush_stdio_loop():
     while True:
         time.sleep(1)
         stdout.flush()
+        stderr.flush()
 
 
 if __name__ == '__main__':
     # support freeze in exe
     multiprocessing.freeze_support()
     # log error and re-raise it
-    t_flush_stdout = threading.Thread(target=flush_stdout_loop, daemon=True)
+    t_flush_stdout = threading.Thread(target=flush_stdio_loop, daemon=True)
     t_flush_stdout.start()
     try:
         if len(argv) > 2:
