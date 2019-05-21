@@ -1,5 +1,6 @@
 {
   "name": "electron-python",
+  "productName": "Electron Python",
   "version": "0.0.1",
   "author": "Chongjun Lei <asakiasako@foxmail.com>",
   "repository": "git@github.com:asakiasako/electron-python.git",
