@@ -3,7 +3,7 @@ url = "https://mirrors.aliyun.com/pypi/simple"
 verify_ssl = true
 
 [scripts]
-build = "python -m PyInstaller main.py --distpath ../static --name api --additional-hooks-dir hooks"
+build = "python -m PyInstaller main.py --distpath ../static --name api --additional-hooks-dir ./hooks"
 
 [dev-packages]
 pyinstaller = "*"
