@@ -1,7 +1,8 @@
 'use strict'
 
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, globalShortcut } from 'electron'
 import './app-path'
+import {acceleratorMap} from './accelerator'
 
 /**
  * Set `__static` path to static files in production
@@ -65,11 +66,22 @@ function createWindow () {
   })
 }
 
+function registerAccelerators () {
+  for (let key in acceleratorMap) {
+    globalShortcut.register(key, () => {
+      acceleratorMap[key](mainWindow)
+    })
+  }
+}
+
 /**
  * app lifecycle
  */
 
-app.on('ready', createWindow)
+app.on('ready', () => {
+  createWindow()
+  registerAccelerators()
+})
 
 app.on('will-quit', () => {
   exitRpcServer()
