@@ -10,7 +10,7 @@ SUB_DIRS = {}   # container of dirs, will load by code below
 
 if getattr( sys, 'frozen', False ):
     # running in a bundle
-    user_data_base = os.path.dirname(os.getcwd())
+    user_data_base = os.path.basename(os.getcwd())
 else:
     # running live
     project_root = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
