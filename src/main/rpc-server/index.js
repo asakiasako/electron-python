@@ -26,8 +26,6 @@ const createRpcServer = () => {
         serverProcessAlive = false
         rpcServer = null
       })
-      rpcServer.stdout.pipe(childStdOut)
-      rpcServer.stderr.pipe(childStdErr)
     }
   }).catch(err => {
     // TODO: error management

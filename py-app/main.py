@@ -1,5 +1,5 @@
 import multiprocessing
-from sys import argv, stdout, stderr
+from sys import argv
 from logger import rpcServerLogger
 
 
