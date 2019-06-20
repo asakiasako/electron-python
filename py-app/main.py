@@ -1,20 +1,32 @@
 import multiprocessing
-from sys import argv
-from logger import rpcServerLogger
+import sys
+import os
 
+
+# disable stdout & stderr when frozen
+if getattr(sys, 'frozen', False):
+    # running in a bundle (mean frozen)
+    # if frozen, disable child process stdio, otherwise stdio buffer may exceed
+    # maxBuffer of node.js execFile, and this child process would be killed.
+    f_nul = open(os.devnull, 'w')
+    sys.stdout = f_nul
+    sys.stderr = f_nul
+
+
+from logger import rpcServerLogger
 
 if __name__ == '__main__':
     # support freeze in exe
     multiprocessing.freeze_support()
 
-    if len(argv) == 1:
-        port = 23300
-    elif len(argv) != 2:
-        raise TypeError('Takes 1 argument but %d is given.' % (len(argv)-1))
-    else:
-        port = int(argv[1])
-
     try:
+        if len(sys.argv) == 1:
+            port = 23300
+        elif len(sys.argv) != 2:
+            raise TypeError('Takes 1 argument but %d is given.' % (len(sys.argv)-1))
+        else:
+            port = int(sys.argv[1])
+        # import & run rpc_server
         from server import rpc_server
         rpc_server(port)
     except Exception as e:
