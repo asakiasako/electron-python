@@ -11,6 +11,19 @@ if getattr(sys, 'frozen', False):
     f_nul = open(os.devnull, 'w')
     sys.stdout = f_nul
     sys.stderr = f_nul
+else:
+    # if not frozen, flush stdio
+    import time
+    import threading
+
+    def flush_stdio_loop():
+        while True:
+            time.sleep(1)
+            sys.stdout.flush()
+            sys.stderr.flush()
+
+    t_flush_stdout = threading.Thread(target=flush_stdio_loop, daemon=True)
+    t_flush_stdout.start()
 
 
 from logger import rpcServerLogger

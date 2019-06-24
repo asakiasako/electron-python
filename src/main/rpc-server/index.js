@@ -3,7 +3,6 @@
  */
 const { DEFAULT_SERVER_PORT, PYTHON_PATH, PROCESS_PATH } = require('./const')
 const portIsOccupied = require('./checkPort')
-const { childStdOut, childStdErr } = require('./stdio')
 
 let rpcServer, rpcPort
 let serverProcessAlive = false
@@ -13,6 +12,8 @@ const createRpcServer = () => {
   portIsOccupied(DEFAULT_SERVER_PORT).then(port => {
     if (process.env.NODE_ENV !== 'production') {
       rpcServer = require('child_process').spawn(PYTHON_PATH, [PROCESS_PATH, port])
+      rpcServer.stdout.pipe(process.stdout)
+      rpcServer.stderr.pipe(process.stderr)
     } else {
       rpcServer = require('child_process').execFile(PROCESS_PATH, [port])
     }
