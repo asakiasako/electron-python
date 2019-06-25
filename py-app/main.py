@@ -2,6 +2,9 @@ import multiprocessing
 import sys
 import os
 
+from paths import get_sub_dir
+from logger import register_logger, get_logger
+
 
 # disable stdout & stderr when frozen
 if getattr(sys, 'frozen', False):
@@ -12,10 +15,10 @@ if getattr(sys, 'frozen', False):
     sys.stdout = f_nul
     sys.stderr = f_nul
 else:
-    # if not frozen, flush stdio
     import time
     import threading
 
+    # if not frozen, flush stdio
     def flush_stdio_loop():
         while True:
             time.sleep(1)
@@ -26,23 +29,21 @@ else:
     t_flush_stdout.start()
 
 
-from logger import rpcServerLogger
+# register rpcServerLogger
+rpcServerLogger = register_logger('RPCServer', get_sub_dir('Logs'))
+
 
 if __name__ == '__main__':
     # support freeze in exe
     multiprocessing.freeze_support()
 
     try:
-        if len(sys.argv) == 1:
-            port = 23300
-        elif len(sys.argv) != 2:
-            raise TypeError('Takes 1 argument but %d is given.' % (len(sys.argv)-1))
-        else:
-            port = int(sys.argv[1])
-        # import & run rpc_server
+        # run RPCServer
+        port = int(os.environ['rpcServerPort'])
         from server import rpc_server
         rpc_server(port)
+
     except Exception as e:
-        # log error and re-raise it
+        # If error in main loop, log to file and re-raise.
         rpcServerLogger.exception('RPC Server ERROR')
         raise e

@@ -6,8 +6,10 @@ let appName = app.getName()
 if (process.env.NODE_ENV === 'development') {
   const fs = require('fs')
   let jsonStr = fs.readFileSync('package.json')
-  appName = JSON.parse(jsonStr).productName + '_DEV'
+  appName = `[dev] ${JSON.parse(jsonStr).productName}`
 }
+
+// add a post-fix if not in production env
 let userData = path.join(appData, appName)
 
 app.setPath('appData', appData)

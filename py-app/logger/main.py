@@ -1,16 +1,27 @@
 import logging
-import logging.handlers
-from .config import LOG_FILE_PATH, LOG_FILE_BACKUP_COUNT
-from os.path import join
+from ._types import SafeFileHandler
 
-# logger
-rpcServerLogger = logging.getLogger('RPCServer')
-rpcServerLogger.setLevel(logging.DEBUG)
-# handler
-filename = 'RPC-Server.log'
-fileHandler = logging.handlers.TimedRotatingFileHandler(join(LOG_FILE_PATH, filename) , 'midnight', 1, LOG_FILE_BACKUP_COUNT)
-# formatter
-appLogFormatter = logging.Formatter(fmt='\n[%(asctime)s - %(name)s - %(levelname)s - %(message)s]')
+LOGGERS = {}
 
-fileHandler.setFormatter(appLogFormatter)
-rpcServerLogger.addHandler(fileHandler)
+def register_logger(name, path, level=logging.DEBUG):
+    # define logger
+    logger = logging.getLogger(name)
+    logger.setLevel(level)
+    # define handler
+    fileHandler = SafeFileHandler(path)
+    # define formatter
+    formatter = logging.Formatter(fmt='\n[%(asctime)s - %(name)s - %(levelname)s - %(message)s]')
+
+    # set to logger
+    fileHandler.setFormatter(formatter)
+    logger.addHandler(fileHandler)
+
+    LOGGERS[name] = logger
+
+    return logger
+
+def get_logger(name):
+    return LOGGERS[name]
+
+def del_logger(name):
+    del(LOGGERS[name])

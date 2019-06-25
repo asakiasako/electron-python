@@ -1,5 +1,8 @@
 from .routes import API_ROUTES
-from logger import rpcServerLogger
+from logger import get_logger
+
+
+rpcServerLogger = get_logger('RPCServer')
 
 
 class APIRouteError(Exception):

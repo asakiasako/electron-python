@@ -11,11 +11,32 @@ let userDataPath = require('electron').app.getPath('userData')
 const createRpcServer = () => {
   portIsOccupied(DEFAULT_SERVER_PORT).then(port => {
     if (process.env.NODE_ENV !== 'production') {
-      rpcServer = require('child_process').spawn(PYTHON_PATH, [PROCESS_PATH, port])
+      rpcServer = require('child_process').spawn(
+        PYTHON_PATH,
+        [PROCESS_PATH],
+        {
+          // add env vars to child process
+          env: Object.assign(process.env, {
+            userDataPath: userDataPath,
+            rpcServerPort: port
+          })
+        }
+      )
+      // pipe child process stdio to main process if in dev env
       rpcServer.stdout.pipe(process.stdout)
       rpcServer.stderr.pipe(process.stderr)
     } else {
-      rpcServer = require('child_process').execFile(PROCESS_PATH, [port])
+      rpcServer = require('child_process').execFile(
+        PROCESS_PATH,
+        undefined,
+        {
+          // add env vars to child process
+          env: Object.assign(process.env, {
+            userDataPath: userDataPath,
+            rpcServerPort: port
+          })
+        }
+      )
     }
     if (rpcServer !== null) {
       console.log(`RPC server running on port ${port}`)
