@@ -30,7 +30,7 @@ else:
 
 
 # register rpcServerLogger
-rpcServerLogger = register_logger('RPCServer', get_sub_dir('Logs'))
+rpcServerLogger = register_logger('RPCServer', os.path.join(get_sub_dir('Logs'), 'RPC-Server.log'))
 
 
 if __name__ == '__main__':
