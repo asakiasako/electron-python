@@ -37,4 +37,8 @@ rpcClient.request = function (params) {
   return rpcClient.invokes('request', params)
 }
 
+rpcClient.checkConnection = function () {
+  return rpcClient.invokes('check_connection')
+}
+
 rpcClient.connectServer(clientIP)

@@ -68,3 +68,7 @@ class API:
                 route = 'No route in request params.'
             rpcServerLogger.exception('API method error: "%s"' % route)
             raise e
+    
+    @staticmethod
+    def check_connection():
+        return True
